@@ -7,7 +7,7 @@ app = Flask(__name__)
 ask = Ask(app,"/")
 
 @ask.launch
-def newLaunch():
+def launched():
 	welcome = "Welcome to crypto pricer. Do you want to continue in knowing the crypto currency prices?"
 	return question(welcome)
 
@@ -26,10 +26,24 @@ def NoIntent():
 	text = "Okay no problem! Will hopefully serve you soon! Bye!"
 	return statement(text)
 
+@ask.intent('AMAZON.StopIntent')
+def stop():
+    return statement("Goodbye")
+
+
+@ask.intent('AMAZON.CancelIntent')
+def cancel():
+    return statement("Goodbye")
+
+@ask.intent('AMAZON.HelpIntent')
+def help():
+    return question("hi")
+
+@ask.session_ended
+def session_ended():
+    return "{}", 200
+
+
+
 if __name__ == '__main__':
 	app.run(debug=True)
-
-#https://u8t5g0546m.execute-api.us-east-1.amazonaws.com/dev
-
-
-#6D4WWyBZl04uNsIeOjUfqaaMTBLhObQaX2PWoP-o4Nns
