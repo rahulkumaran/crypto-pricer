@@ -28,12 +28,14 @@ def NoIntent():
 
 @ask.intent('AMAZON.StopIntent')
 def stop():
-    return statement("Goodbye")
+    bye_text = render_template('bye')
+    return statement(bye_text)
 
 
 @ask.intent('AMAZON.CancelIntent')
 def cancel():
-    return statement("Goodbye")
+    bye_text = render_template('bye')
+return statement(bye_text)
 
 @ask.intent('AMAZON.HelpIntent')
 def help():
