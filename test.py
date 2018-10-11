@@ -28,18 +28,16 @@ def NoIntent():
 
 @ask.intent('AMAZON.StopIntent')
 def stop():
-    bye_text = render_template('bye')
-    return statement(bye_text)
+    return statement("Alright! Bye.")
 
 
 @ask.intent('AMAZON.CancelIntent')
 def cancel():
-    bye_text = render_template('bye')
-return statement(bye_text)
+	return statement("Alright! Bye.")
 
 @ask.intent('AMAZON.HelpIntent')
 def help():
-    return question("hi")
+    return question("Say the command start crypto pricer to get infomration on various crypto prices")
 
 @ask.session_ended
 def session_ended():
